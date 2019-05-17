@@ -1,0 +1,35 @@
+{
+    "name": "Thicc",
+    "license-name": "GPL-2.0+",
+    "version": "0.0.0",
+    "namemsg": "thicc",
+    "descriptionmsg": "thicc-desc",
+    "manifest_version": 1,
+    "MessagesDirs": {
+        "Thicc": [ "i18n" ]
+    },
+    "AutoloadClasses": [],
+    "ResourceFileModulePaths": {
+        "localBasePath": "modules",
+        "remoteExtPath": "Thicc/modules"
+    },
+    "ResourceModules": {
+        "ext.thicc": {
+            "scripts": [
+                "ext.thicc.js"
+            ],
+            "styles": [
+                "ext.thicc.css"
+            ],
+            "messages": [
+                "thicc",
+                "thicc-desc"
+            ],
+            "dependencies": []
+        }
+    },
+    "Hooks": {
+        "ResourceLoaderTestModules": [ "ThiccHooks::onResourceLoaderTestModules" ]
+    },
+    "type": "other"
+}
