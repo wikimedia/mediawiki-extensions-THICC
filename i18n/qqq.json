@@ -1,7 +1,7 @@
 {
-    "@metadata": {
-        "authors": []
-    },
-    "thicc": "The name of the extension",
-    "thicc-desc": "{{desc|name=Thicc|url=}}"
+	"@metadata": {
+		"authors": []
+	},
+	"thicc": "The name of the extension",
+	"thicc-desc": "{{desc|name=Thicc|url=}}"
 }
