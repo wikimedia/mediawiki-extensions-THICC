@@ -10,7 +10,14 @@
 	"MessagesDirs": {
 		"Thicc": [ "i18n" ]
 	},
-	"AutoloadClasses": [],
+	"AutoloadClasses": {
+		"ThiccHooks": "includes/ThiccHooks.php",
+		"ThiccModelContent": "includes/ThiccModelContent.php",
+		"ThiccModelContentHandler": "includes/ThiccModelContentHandler.php"
+	},
+	"ContentHandlers": {
+		"ThiccModelContent": "ThiccModelContentHandler"
+	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",
 		"remoteExtPath": "THICC/modules"
