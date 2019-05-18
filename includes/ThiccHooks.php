@@ -7,13 +7,13 @@
  * @license GPL-2.0+
  */
 class ThiccHooks {
+
 	/**
 	 * Conditionally register the unit testing module for the ext.thicc module
 	 * only if that module is loaded
 	 *
 	 * @param array $testModules The array of registered test modules
 	 * @param ResourceLoader $resourceLoader The reference to the resource loader
-	 * @return true
 	 */
 	public static function onResourceLoaderTestModules( array &$testModules, ResourceLoader &$resourceLoader ) {
 		$testModules['qunit']['ext.thicc.tests'] = [
@@ -26,7 +26,6 @@ class ThiccHooks {
 			'localBasePath' => __DIR__,
 			'remoteExtPath' => 'Thicc',
 		];
-		return true;
 	}
 
 	/**
@@ -35,8 +34,7 @@ class ThiccHooks {
 	 *
 	 * @param DatabaseUpdater $updater
 	 */
-	public static function onLoadExtensionSchemaUpdates($updater)
-	{
+	public static function onLoadExtensionSchemaUpdates( $updater ) {
 		$patchPath = __DIR__ . '/../sql/';
 
 		$updater->addExtensionTable(

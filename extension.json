@@ -3,10 +3,11 @@
 	"namemsg": "thicc-displayname",
 	"descriptionmsg": "thicc-desc",
 	"url": "https://www.mediawiki.org/wiki/Extension:THICC",
-	"license-name": "GPL-2.0+",
+	"license-name": "GPL-2.0-or-later",
 	"version": "0.0.0",
 	"author": [ "Ostrzyciel", "Brian Wolff", "Calimonius the Estrange" ],
 	"manifest_version": 1,
+	"type": "other",
 	"MessagesDirs": {
 		"Thicc": [ "i18n" ]
 	},
@@ -34,8 +35,7 @@
 		}
 	},
 	"Hooks": {
-		"ResourceLoaderTestModules": [ "ThiccHooks::onResourceLoaderTestModules" ],
+		"ResourceLoaderTestModules": "ThiccHooks::onResourceLoaderTestModules",
 		"LoadExtensionSchemaUpdates": "ThiccHooks::onLoadExtensionSchemaUpdates"
-	},
-	"type": "other"
+	}
 }
