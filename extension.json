@@ -34,7 +34,8 @@
 		}
 	},
 	"Hooks": {
-		"ResourceLoaderTestModules": [ "ThiccHooks::onResourceLoaderTestModules" ]
+		"ResourceLoaderTestModules": [ "ThiccHooks::onResourceLoaderTestModules" ],
+		"LoadExtensionSchemaUpdates": "ThiccHooks::onLoadExtensionSchemaUpdates"
 	},
 	"type": "other"
 }

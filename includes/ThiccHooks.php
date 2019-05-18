@@ -28,4 +28,21 @@ class ThiccHooks {
 		];
 		return true;
 	}
+
+	/**
+	 * Adds the required table storing votes into the database when the
+	 * end-user (sysadmin) runs /maintenance/update.php
+	 *
+	 * @param DatabaseUpdater $updater
+	 */
+	public static function onLoadExtensionSchemaUpdates($updater)
+	{
+		$patchPath = __DIR__ . '/../sql/';
+
+		$updater->addExtensionTable(
+			'thicc_threads',
+			$patchPath . 'create-table--thicc-threads.sql'
+		);
+	}
+
 }
