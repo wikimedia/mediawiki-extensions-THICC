@@ -14,10 +14,13 @@
 	"AutoloadClasses": {
 		"ThiccHooks": "includes/ThiccHooks.php",
 		"ThiccModelContent": "includes/ThiccModelContent.php",
-		"ThiccModelContentHandler": "includes/ThiccModelContentHandler.php"
+		"ThiccModelContentHandler": "includes/ThiccModelContentHandler.php",
+		"ThiccModelAggregateContent": "includes/ThiccModelAggregateContent.php",
+		"ThiccModelAggregateContentHandler": "includes/ThiccModelAggregateContentHandler.php"
 	},
 	"ContentHandlers": {
-		"ThiccModelContent": "ThiccModelContentHandler"
+		"ThiccModelContent": "ThiccModelContentHandler",
+		"ThiccModelAggregateContent": "ThiccModelAggregateContentHandler"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "modules",

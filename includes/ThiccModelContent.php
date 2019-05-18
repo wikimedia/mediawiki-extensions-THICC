@@ -1,7 +1,7 @@
 <?php
 
 /**
- * @class ThiccModelContent
+ * Threads for our thicckener
  */
 class ThiccModelContent extends JsonContent {
 
