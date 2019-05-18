@@ -26,12 +26,12 @@
 		{
 			"id": 690,
 			"constant": "NS_THICC",
-			"name": "Thicc"
+			"name": "THICC"
 		},
 		{
 			"id": 691,
 			"constant": "NS_THICC_TALK",
-			"name": "Thicc_talk"
+			"name": "THICC_talk"
 		}
 	],
 	"ResourceFileModulePaths": {
