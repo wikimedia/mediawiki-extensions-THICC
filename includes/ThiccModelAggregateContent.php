@@ -105,28 +105,12 @@ class ThiccModelAggregateContent extends JsonContent {
 			$html .= Html::element('br');
 
 			foreach ( $this->thiccness as $thicc ) {
-
 				$title = Title::newFromText( $thicc->thread, NS_THICC );
 				$page = WikiPage::factory( $title );
 				$content = $page->getContent();
 
 				$html .= $content->getContent( $title, $options );
 			}
-
-			// Thread styles, check later if we even have any threads to load this
-			$output->addModuleStyles( [ 'ext.thicc.threads' ] );
-
-
-//			$html .= Html::openElement(
-//				'div',
-//				[ 'class' => 'thicc-thread' ]
-//			);
-//			$html .= Html::element( 'h2', [], $this->displayName );
-//
-//			// do first comment
-//			$html .= $this->renderComment( $this->comment );
-//
-//			$html .= Html::closeElement( 'div' );
 		}
 
 		$output->setText( $html );
