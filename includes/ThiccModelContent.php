@@ -23,6 +23,8 @@ class ThiccModelContent extends JsonContent {
 	/** @var string Error message text */
 	protected $errortext;
 
+	protected $parser;
+
 	/**
 	 * @param string $text
 	 */
@@ -78,6 +80,9 @@ class ThiccModelContent extends JsonContent {
 			}
 		}
 
+		// because we use this a lot...
+		$this->parser = MediaWiki\MediaWikiServices::getInstance()->getParser();
+
 		$this->decoded = true;
 	}
 
@@ -104,7 +109,7 @@ class ThiccModelContent extends JsonContent {
 			. $this->errortext
 			. '</pre>';
 		} else {
-			$html = $this->getContent();
+			$html = $this->getContent( $title, $options );
 
 			// Add some style stuff
 			$output->addModuleStyles( [ 'ext.thicc.threads' ] );
@@ -119,23 +124,42 @@ class ThiccModelContent extends JsonContent {
 	 * @param object $comment from the json
 	 * @return string html
 	 */
-	private function renderComment( $comment ) {
-		$content = $comment->content; // parse this
+	private function renderComment( $comment, $title, $options ) {
 		$author = $comment->metadata->author; // get user with name
+		$authorLinks = Html::rawElement(
+			'span',
+			[ 'class' => 'thicc-user' ],
+			Linker::link( Title::newFromText( $author, NS_USER ), $author )
+		);
+
 		$timestamp = $comment->metadata->timestamp; // convert/render
+		$renderedTimestamp = Html::rawElement(
+			'span',
+			[ 'class' => 'thicc-timestamp' ],
+			MWTimestamp::getInstance( $timestamp )->getHumanTimestamp()
+		);
+
+		$content = $comment->content;
+		$options->enableLimitReport( false );
+		$tempOutput = $this->parser->parse( $content, $title, $options );
+		$parsedContent = $tempOutput->getText( [ 'unwrap' => true ] );
 
 		$html = '';
 
 		$html .= Html::openElement( 'div', [ 'class' => 'thicc-comment' ] );
 		$html .= Html::openElement( 'div', [ 'class' => 'thicc-comment-content' ] );
-		$html .= Html::rawElement( 'div', [ 'class' => 'thicc-comment-text' ], $content );
-		$html .= Html::rawElement( 'div', [ 'class' => 'thicc-comment-postinfo' ], $author . $timestamp );
+		$html .= Html::rawElement( 'div', [ 'class' => 'thicc-comment-text' ], $parsedContent );
+		$html .= Html::rawElement(
+			'div',
+			[ 'class' => 'thicc-comment-postinfo' ],
+			$authorLinks . $renderedTimestamp
+		);
 
 		$html .= Html::closeElement( 'div' );
 
 		if ( is_array( $comment->children ) ) {
 			foreach ( $comment->children as $childComment ) {
-				$html .= $this->renderComment( $childComment );
+				$html .= $this->renderComment( $childComment, $title, $options );
 			}
 		}
 
@@ -149,7 +173,7 @@ class ThiccModelContent extends JsonContent {
 	 *
 	 * @return string html
 	 */
-	public function getContent() {
+	public function getContent( $title, $options ) {
 		$this->decode();
 
 		$html = '';
@@ -168,7 +192,7 @@ class ThiccModelContent extends JsonContent {
 		$html .= Html::rawElement(
 			'div',
 			[ 'class' => 'thicc-comments' ],
-			$this->renderComment( $this->comment )
+			$this->renderComment( $this->comment, $title, $options  )
 		);
 
 		$html .= Html::closeElement( 'div' );

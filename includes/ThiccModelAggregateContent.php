@@ -110,7 +110,7 @@ class ThiccModelAggregateContent extends JsonContent {
 				$page = WikiPage::factory( $title );
 				$content = $page->getContent();
 
-				$html .= $content->getContent();
+				$html .= $content->getContent( $title, $options );
 			}
 
 			// Thread styles, check later if we even have any threads to load this
