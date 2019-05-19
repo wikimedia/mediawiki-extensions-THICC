@@ -70,7 +70,7 @@ class ThiccModelAggregateContent extends JsonContent {
 				}
 			} else {
 				$this->metadata = $data->metadata ?? [];
-				$this->introduction = $data->introduction ?? [];
+				$this->introduction = $data->introduction ?? '';
 				$this->thiccness = $data->thiccness ?? [];
 			}
 		}
@@ -111,6 +111,9 @@ class ThiccModelAggregateContent extends JsonContent {
 
 				$html .= $content->getContent( $title, $options );
 			}
+
+			// Thread styles, check later if we even have any threads to load this
+			$output->addModuleStyles( [ 'ext.thicc.threads' ] );
 		}
 
 		$output->setText( $html );
