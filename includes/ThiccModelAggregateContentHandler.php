@@ -27,6 +27,7 @@ class ThiccModelAggregateContentHandler extends JsonContentHandler {
 				"metadata": [],
 				"introduction": "",
 				"thiccness": [
+					{ }
 				]
 			}
 JSON;
