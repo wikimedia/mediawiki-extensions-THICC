@@ -111,6 +111,7 @@ class ThiccModelContent extends JsonContent {
 			$html .= Html::element( 'h2', [], $this->displayName );
 
 			// do first comment
+			$html .= $this->renderComment( $this->comment );
 
 			$html .= Html::closeElement( 'div' );
 		}
@@ -119,7 +120,39 @@ class ThiccModelContent extends JsonContent {
 	}
 
 	/* ??? */
-	private function renderComment() {
+	private function renderComment( $comment ) {
+		/* object(stdClass)#412 (3) {
+			["content"]=> string(19) "Blah blah blah blah"
+			["metadata"]=> object(stdClass)#411 (2) {
+				["author"]=> string(8) "Your mom"
+				["timestamp"]=> string(5) "~~~~~"
+			}
+			["children"]=> array(0) { }
+		} */
+		$content = $comment->content; // parse this
+		$author = $comment->metadata->author; // get user with name
+		$timestamp = $comment->metadata->timestamp; // convert/render
+
+		$html = '';
+
+		$html .= Html::openElement( 'div', [] );
+		$html .= Html::openElement( 'div', [] );
+		$html .= Html::rawElement( 'div', [], $content );
+		$html .= Html::rawElement( 'div', [], $author . $timestamp );
+
+		$html .= Html::closeElement( 'div' );
+
+		if ( is_array( $comment->children ) ) {
+			foreach ( $comment->children as $childComment ) {
+				$html .= $this->renderComment( $childComment );
+			}
+		}
+
+		$html .= Html::closeElement( 'div' );
+
+		return $html;
+
+
 		// parse current comment
 		// do wrappers and stuff
 		// foreach children, nest $this->renderComment( $child )
