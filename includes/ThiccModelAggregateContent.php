@@ -110,6 +110,8 @@ class ThiccModelAggregateContent extends JsonContent {
 				$content = $page->getContent();
 
 				$html .= $content->getContent( $title, $options );
+				// register as template
+				$output->addTemplate( $title, $title->getArticleID(), null );
 			}
 
 			// Thread styles, check later if we even have any threads to load this
