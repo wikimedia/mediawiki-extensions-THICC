@@ -1,5 +1,7 @@
 <?php
 
+use MediaWiki\MediaWikiServices;
+
 /**
  * Threads for our thicckener
  */
@@ -81,7 +83,7 @@ class ThiccModelContent extends JsonContent {
 		}
 
 		// because we use this a lot...
-		$this->parser = MediaWiki\MediaWikiServices::getInstance()->getParser();
+		$this->parser = MediaWikiServices::getInstance()->getParser();
 
 		$this->decoded = true;
 	}
@@ -125,11 +127,16 @@ class ThiccModelContent extends JsonContent {
 	 * @return string html
 	 */
 	private function renderComment( $comment, $title, $options ) {
+		$linkRenderer = MediaWikiServices::getInstance()->getLinkRenderer();
+
 		$author = $comment->metadata->author; // get user with name
 		$authorLinks = Html::rawElement(
 			'span',
 			[ 'class' => 'thicc-user' ],
-			Linker::link( Title::newFromText( $author, NS_USER ), $author )
+			$linkRenderer->makeLink( Title::newFromText( $author, NS_USER ), $author ) .
+				' (' .
+				$linkRenderer->makeLink( Title::newFromText( $author, NS_USER_TALK ), wfMessage( 'talkpagelinktext' )->text() ) .
+				') '
 		);
 
 		$timestamp = $comment->metadata->timestamp; // convert/render
