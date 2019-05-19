@@ -43,10 +43,12 @@
 			"scripts": [
 				"ext.thicc.js"
 			],
+			"messages": []
+		},
+		"ext.thicc.threads": {
 			"styles": [
-				"ext.thicc.css"
-			],
-			"dependencies": []
+				"ext.thicc.threads.less"
+			]
 		}
 	},
 	"Hooks": {
