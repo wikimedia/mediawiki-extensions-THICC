@@ -104,41 +104,32 @@ class ThiccModelContent extends JsonContent {
 			. $this->errortext
 			. '</pre>';
 		} else {
-			$html .= Html::openElement(
-				'div',
-				[ 'class' => 'thicc-thread' ]
-			);
-			$html .= Html::element( 'h2', [], $this->displayName );
+			$html = $this->getContent();
 
-			// do first comment
-			$html .= $this->renderComment( $this->comment );
-
-			$html .= Html::closeElement( 'div' );
+			// Add some style stuff
+			$output->addModuleStyles( [ 'ext.thicc.threads' ] );
 		}
 
 		$output->setText( $html );
 	}
 
-	/* ??? */
+	/**
+	 * Helper function for fillParserOutput
+	 *
+	 * @param object $comment from the json
+	 * @return string html
+	 */
 	private function renderComment( $comment ) {
-		/* object(stdClass)#412 (3) {
-			["content"]=> string(19) "Blah blah blah blah"
-			["metadata"]=> object(stdClass)#411 (2) {
-				["author"]=> string(8) "Your mom"
-				["timestamp"]=> string(5) "~~~~~"
-			}
-			["children"]=> array(0) { }
-		} */
 		$content = $comment->content; // parse this
 		$author = $comment->metadata->author; // get user with name
 		$timestamp = $comment->metadata->timestamp; // convert/render
 
 		$html = '';
 
-		$html .= Html::openElement( 'div', [] );
-		$html .= Html::openElement( 'div', [] );
-		$html .= Html::rawElement( 'div', [], $content );
-		$html .= Html::rawElement( 'div', [], $author . $timestamp );
+		$html .= Html::openElement( 'div', [ 'class' => 'thicc-comment' ] );
+		$html .= Html::openElement( 'div', [ 'class' => 'thicc-comment-content' ] );
+		$html .= Html::rawElement( 'div', [ 'class' => 'thicc-comment-text' ], $content );
+		$html .= Html::rawElement( 'div', [ 'class' => 'thicc-comment-postinfo' ], $author . $timestamp );
 
 		$html .= Html::closeElement( 'div' );
 
@@ -151,10 +142,37 @@ class ThiccModelContent extends JsonContent {
 		$html .= Html::closeElement( 'div' );
 
 		return $html;
+	}
 
+	/**
+	 * Helper function for fillParserOutput/for letting other pages 'transclude' this...
+	 *
+	 * @return string html
+	 */
+	public function getContent() {
+		$this->decode();
 
-		// parse current comment
-		// do wrappers and stuff
-		// foreach children, nest $this->renderComment( $child )
+		$html = '';
+
+		$html .= Html::openElement(
+			'div',
+			[ 'class' => 'thicc-thread' ]
+		);
+		$html .= Html::element(
+			'h2',
+			[ 'class' =>  'thicc-headline' ],
+			$this->displayName
+		);
+
+		// do first comment
+		$html .= Html::rawElement(
+			'div',
+			[ 'class' => 'thicc-comments' ],
+			$this->renderComment( $this->comment )
+		);
+
+		$html .= Html::closeElement( 'div' );
+
+		return $html;
 	}
 }
