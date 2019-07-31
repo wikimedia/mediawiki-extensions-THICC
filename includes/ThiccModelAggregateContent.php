@@ -102,7 +102,7 @@ class ThiccModelAggregateContent extends JsonContent {
 				. '</pre>';
 		} else {
 			$html .= $this->introduction;
-			$html .= Html::element('br');
+			$html .= Html::element( 'br' );
 
 			foreach ( $this->thiccness as $thicc ) {
 				$title = Title::newFromText( $thicc->thread, NS_THICC );

@@ -199,7 +199,7 @@ class ThiccModelContent extends JsonContent {
 		$html .= Html::rawElement(
 			'div',
 			[ 'class' => 'thicc-comments' ],
-			$this->renderComment( $this->comment, $title, $options  )
+			$this->renderComment( $this->comment, $title, $options )
 		);
 
 		$html .= Html::closeElement( 'div' );
