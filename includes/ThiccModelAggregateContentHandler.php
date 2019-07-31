@@ -15,7 +15,6 @@ class ThiccModelAggregateContentHandler extends JsonContentHandler {
 		$formats = [ CONTENT_FORMAT_JSON ]
 	) {
 		parent::__construct( $modelId, $formats );
-
 	}
 
 	/**
