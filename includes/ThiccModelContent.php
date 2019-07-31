@@ -191,7 +191,7 @@ class ThiccModelContent extends JsonContent {
 		);
 		$html .= Html::element(
 			'h2',
-			[ 'class' =>  'thicc-headline' ],
+			[ 'class' => 'thicc-headline' ],
 			$this->displayName
 		);
 

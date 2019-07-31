@@ -7,7 +7,6 @@
 		<exclude name="MediaWiki.Commenting.FunctionComment.ParamNameNoMatch" />
 		<exclude name="MediaWiki.Commenting.LicenseComment.DeprecatedLicenseTag" />
 		<exclude name="MediaWiki.WhiteSpace.SpaceBeforeSingleLineComment.NewLineComment" />
-		<exclude name="Squiz.WhiteSpace.OperatorSpacing.SpacingAfter" />
 	</rule>
 	<file>.</file>
 	<arg name="extensions" value="php,php5,inc"/>
