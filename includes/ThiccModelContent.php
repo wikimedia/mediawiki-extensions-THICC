@@ -164,7 +164,7 @@ class ThiccModelContent extends JsonContent {
 
 		$html .= Html::closeElement( 'div' );
 
-		if ( property_exists( $comment,'children' ) && is_array( $comment->children ) ) {
+		if ( property_exists( $comment, 'children' ) && is_array( $comment->children ) ) {
 			foreach ( $comment->children as $childComment ) {
 				$html .= $this->renderComment( $childComment, $title, $options );
 			}
