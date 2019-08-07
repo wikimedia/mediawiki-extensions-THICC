@@ -23,7 +23,7 @@ class ThiccHooks {
 			'dependencies' => [
 				'ext.thicc'
 			],
-			'localBasePath' => __DIR__,
+			'localBasePath' => dirname( __DIR__ ),
 			'remoteExtPath' => 'Thicc',
 		];
 	}
