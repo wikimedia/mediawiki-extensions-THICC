@@ -1,5 +1,7 @@
 {
-	"@metadata": [],
+	"@metadata": {
+		"authors": []
+	},
 	"thicc-displayname": "{{name}}",
 	"thicc-desc": "{{desc|name=Thicc|url=}}"
 }
