@@ -12,7 +12,6 @@
 		"Thicc": [ "i18n" ]
 	},
 	"AutoloadClasses": {
-		"ThiccHooks": "includes/ThiccHooks.php",
 		"ThiccModelContent": "includes/ThiccModelContent.php",
 		"ThiccModelContentHandler": "includes/ThiccModelContentHandler.php",
 		"ThiccModelAggregateContent": "includes/ThiccModelAggregateContent.php",
@@ -50,8 +49,5 @@
 				"ext.thicc.threads.less"
 			]
 		}
-	},
-	"Hooks": {
-		"ResourceLoaderTestModules": "ThiccHooks::onResourceLoaderTestModules"
 	}
 }
