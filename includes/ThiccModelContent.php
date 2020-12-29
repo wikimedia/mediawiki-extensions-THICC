@@ -123,7 +123,7 @@ class ThiccModelContent extends JsonContent {
 	/**
 	 * Helper function for fillParserOutput
 	 *
-	 * @param object $comment from the json
+	 * @param stdClass $comment from the json
 	 * @return string html
 	 */
 	private function renderComment( $comment, $title, $options ) {
