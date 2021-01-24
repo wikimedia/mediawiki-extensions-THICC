@@ -25,6 +25,7 @@ class ThiccModelContent extends JsonContent {
 	/** @var string Error message text */
 	protected $errortext;
 
+	/** @var Parser|null */
 	protected $parser;
 
 	/**
@@ -124,6 +125,8 @@ class ThiccModelContent extends JsonContent {
 	 * Helper function for fillParserOutput
 	 *
 	 * @param stdClass $comment from the json
+	 * @param Title $title
+	 * @param ParserOptions $options
 	 * @return string html
 	 */
 	private function renderComment( $comment, $title, $options ) {
@@ -178,6 +181,8 @@ class ThiccModelContent extends JsonContent {
 	/**
 	 * Helper function for fillParserOutput/for letting other pages 'transclude' this...
 	 *
+	 * @param Title $title
+	 * @param ParserOptions $options
 	 * @return string html
 	 */
 	public function getContent( $title, $options ) {

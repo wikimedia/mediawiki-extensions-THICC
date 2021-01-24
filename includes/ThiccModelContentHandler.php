@@ -11,6 +11,10 @@
 
 class ThiccModelContentHandler extends TextContentHandler {
 
+	/**
+	 * @param string $modelId
+	 * @param string[] $formats
+	 */
 	public function __construct(
 		$modelId = 'ThiccModelContent',
 		$formats = [ CONTENT_FORMAT_JSON ]

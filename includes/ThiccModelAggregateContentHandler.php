@@ -10,6 +10,10 @@
 
 class ThiccModelAggregateContentHandler extends JsonContentHandler {
 
+	/**
+	 * @param string $modelId
+	 * @param string[] $formats
+	 */
 	public function __construct(
 		$modelId = 'ThiccModelAggregateContent',
 		$formats = [ CONTENT_FORMAT_JSON ]
