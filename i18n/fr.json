@@ -2,8 +2,10 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
-			"Thibaut120094"
+			"Thibaut120094",
+			"Verdy p"
 		]
 	},
+	"thicc-displayname": "THICC",
 	"thicc-desc": "L’extension MediaWiki thiccest, qui implémente une communication interactive par fil et le démarchage"
 }
